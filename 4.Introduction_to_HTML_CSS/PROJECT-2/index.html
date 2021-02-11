@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Report - TTN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" </head> <body>
+
+    <div>
+        <ul>
+            <strong>
+                <li><a class="active" href="#"><span>TO THE NEW</span></a></li>
+                <li style="padding-top: 15px;float:right"><a href="#">Quick Help</a></li>
+                <li style="padding-top: 15px;float:right"><a href="#">Home</a></li>
+            </strong>
+        </ul>
+        <hr>
+    </div>
+    <div class="container">
+        <form id="contact" action="" method="post">
+            <div>
+                <strong>
+                    <p class="container-heading">
+                        Bug Report
+                    </p>
+                </strong>
+
+                <div style="padding: 15px;">
+                    <div>
+                        Title *
+                        <input type="text" required class="title">
+                    </div>
+                    <div>
+                        Description *
+                        <textarea required class="description"></textarea>
+                    </div>
+                    <div>
+                        Operating system: <select class="form-select" id="validationCustom04" required>
+                            <option selected style="color: floralwhite;">Windows XP</option>
+                            <option>Ubuntu</option>
+                            <option>Mac OS</option>
+                        </select>
+                    </div>
+                    <div>
+                        Product:<select class="form-select" required">
+                            <option selected>Formoid</option>
+                            <option>Random</option>
+                        </select>
+                    </div>
+                    <div>
+                        Version: *<input type="text" class="version">
+                    </div>
+                    <div class="row">
+                        <div style=" display: inline-block;">
+                            License <br><input type="radio" name="t" value="Male" /> Free
+                        </div>
+                        <div style="display: inline-block;margin-left: 3.5cm;">
+                            <input type="radio" name="t" value="Female" /> Business
+                        </div>
+                    </div>
+                    <div>
+                        Severity:<select class="form-select" id="validationCustom04" required>
+                            <option selected>Critical</option>
+                            <option>Normal</option>
+                        </select>
+                    </div>
+                    <div>
+                        Attachments:
+                        <input type="file" id="myFile" class="title" style="height: auto;">
+                        </label>
+                    </div>
+                </div>
+                <div style="padding: 2px; background-color: #EEEFF1">
+                    <div class="send">
+                        <button type="button" class="btn">Send</button>
+                    </div>
+                </div>
+
+        </form>
+    </div>
+    </div>
+    </body>
+
+</html>
