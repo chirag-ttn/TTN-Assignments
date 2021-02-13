@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header>
+    <h1>TO THE NEW</h1>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Quick Help</a></li>
+    </ul>
+</header>
+<hr>
+<div class="form">
+    <span class="bug">Bug Report</span>
+    
+    <form action="">
+        <div class="inside-form">
+            <label class="grey-text"for="Title">Title:*</label> <br>
+        <input class="input-box" type="text" name="Title"> <br>
+        <label class="grey-text"for="Description">Description:*</label> <br>
+        <input class="text-area-box" type="text-area" name="Description"> <br>
+        <label class="grey-text"for="Operating-System">Operating System:</label>
+        <br>
+        <select class="input-box" name="Operating-System" id="Operating-System">
+            <option value="Windows XP">Windows XP</option>
+            <option value="Windows 7">Windows 7</option>
+            <option value="Windows 10">Windows 10</option>
+            <option value="Ubuntu 16.04">Ubuntu 16.04</option>
+            <option value="Ubuntu 18.04">Ubuntu 18.04</option>
+            <option value="Ubuntu 20.04">Ubuntu 20.04</option>
+    
+        </select>
+        <br>
+        <label class="grey-text"for="Product">Product:*</label>
+        <br>
+        <select class="input-box" name="Product" id="Product">
+            <option value="Dell i3 series">Dell i3 series</option>
+            <option value="Dell i5 series">Dell i5 series</option>
+            <option value="Dell i7 series">Dell i7 series</option>
+            <option value="HP pavillion">HP pavillion</option>
+            <option value="Macbook pro ">Macbook pro </option>
+            <option value="Dell Alienware">Dell Alienware</option>
+    
+        </select>
+        <br>
+        <label class="grey-text"for="Version">Version:*</label>
+        <br>
+        <input class="version"type="text" name="Version"> 
+        <br>
+        <label class="grey-text"for="License">License:</label>
+        <br>
+        <input type="radio" name = "Free" >
+        <label class="grey-text"for="Free">Free</label>
+        
+        <input type="radio" name = "Business">
+        <label class="grey-text"for="Business">Business</label>
+        <br>
+    
+        <label class="grey-text"for="Severity">Severity:</label>
+        <br>
+        <select class="input-box" name="Severity" id="Severity">
+            <option value="Critical">Critical</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+    
+        </select>
+        <br>
+        <label class="grey-text"for="myfile">Attachments:</label> <br>
+        <input class="choose-file"type="file" id="myfile" name="myfile">
+    
+        <button type="submit">Send</button>
+    
+        
+    
+    </form>    
+        </div>
+        
+</div>
+
+</body>
+</html>
