@@ -1,0 +1,29 @@
+.headings{
+    font-weight: 900;
+    font-size: 40px;
+}
+#p1{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: xx-large;
+}
+#p2{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 800;
+    font-size: x-large;
+}
+#p3{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size:larger;
+}
+#p4{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: medium;
+}
+#p5{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size:small;
+}

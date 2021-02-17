@@ -1,0 +1,10 @@
+li::before{
+    content: "->";
+}
+::marker{
+    color:red;
+}
+::selection{
+    color: white;
+    background-color: red;
+}
