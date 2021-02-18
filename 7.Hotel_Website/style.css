@@ -14,8 +14,15 @@ i{
     color:#61CA2D;
 }
 /* container - 1 */
-.container-1{
+.outer-container-1
+{
+    
     width: 100%;
+    background-color: #eee;
+}
+.container-1{
+    margin: auto;
+    width: 80%;
     height: 5vh;
     background-color:#eee;
     display: flex;
@@ -34,17 +41,31 @@ i{
 .container-1-left li {
     display: inline-block;
     
-    padding:0px 5px;
-    padding-top: 5px;
+    padding:5px 10px;
+    
     border-right: 1px solid black;
     
+    
+}
+.container-1-left li:last-child{
+    border:none;
+}
+
+.container-1-left li:hover {
+    
+    color:white;
+    cursor: pointer;
+    background-color: #61CA2D;
     
 }
 .container-1-right li {
     display: inline-block;
     padding: 5px 5px;
 }
-
+.container-1-right i:hover {
+    font-weight: 900;
+    color:darkgreen;
+}
 /* container-2 */
 
 .container-2{
@@ -81,6 +102,13 @@ i{
     padding:10px;
     border:1px solid #61ca2d;
 }
+.container-2-right button:hover{
+    background-color:#61CA2D;
+    color:white;
+    font-weight: 900;
+    padding:10px;
+    border:1px solid white;
+}
 .container-2-right i {
     font-size: 20px;
     margin-right: 10px;
@@ -93,6 +121,7 @@ i{
 /* container-3 */
 
 .container-3{
+    position: sticky;
     width: 100vw;
     height: 10vh;
     background-color: #61CA2D;
@@ -122,10 +151,10 @@ i{
 .container-3 i{
     color:white;
 }
-main .content{
+.content{
     width: 100%;
     height: 80vh;
-    z-index: -1;
+    z-index: 2;
     position: relative;
 }
 .black-layer{
@@ -144,7 +173,7 @@ main .content{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    
+    z-index:3;
     
 
 }
@@ -160,35 +189,43 @@ main .content{
     color:white;
     text-align: center;
 }
-#button1{
-    /* margin-top:20px; */
-    margin:10px 20px;
+.button-wrapper{
+    width: 100%;
+    display: block;
+    /* align-items: center; */
+    text-align: center;
+}
+.button-1{
+    margin: 10px 10px;
+    padding:10px;
+    background-color: transparent;
+    border:1px solid white;
     color:white;
-    font-size: large;
+       
+}
+.button-1:hover{
+    margin: 10px 10px;
+    padding:10px;
     background-color: #61CA2D;
-    padding:5px;
-    border:none;
-    cursor: pointer;
+    font-weight: 700;
+    border:1px solid white;
+    color:white;
     
 }
-#button2{
-    /* margin-top:20px; */
-    margin:10x 5px;
-    color:white;
-    font-size: large;
-    background-color: transparent;
-    padding:5px;
-    border:1px solid white;
-    cursor:all-scroll;
-}
 .card-container{
+    z-index: 4;
     height: fit-content;
     width: 80%;
     display: flex;
     margin:auto;
-    transform: translateY(-30%);
+    position:absolute;
+    
+    right:50%;
+    transform: translate(50%,-40%);
+    /* transform: translateY(-20%); */
 }
 .cards{
+    z-index: 4;
     display: flex;
     flex-wrap: wrap;
     width: 40%;
