@@ -1,0 +1,4 @@
+for i in {1..4}
+do
+	mkdir -p Que$i && touch "./Que$i/index.js"
+done
