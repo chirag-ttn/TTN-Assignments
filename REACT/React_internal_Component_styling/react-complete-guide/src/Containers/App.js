@@ -1,31 +1,47 @@
 // states in classBased Components
 
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Person from './Person/Person'
+import Cockpit from '../Components/Cockpit/Cockpit'
+import styles from './App.module.css';
+import Person from '../Components/Persons/Person/Person'
+import Persons from '../Components/Persons/Persons'
+
 // import styled from 'styled-components'
 // import Radium ,{StyleRoot}from 'radium'
-const StyledButton = styled.button`
-      background-color:${props=> props.alt?'red':'green'};
-      border:1px solid black;
-      padding:8px;
-      cursor:pointer;
-      &:hover{
-        background-color:${props=>props.alt?'salmon':'lightgreen'};
-        color:black;
-      }
-`
+
 class App extends Component {
   // state property only works with classes that extends Component not with functions
-  state = {
-    persons : [
-      {name:"chirag",age:"22"},
-      {name:"saksham",age:"19"},
-      {name:"Taruna",age:"22"}
-    ],
-    showPersons:false
+  constructor(props){
+      super(props)//its important to call super to initialise component correctly
+      console.log("App.js constructor")
+     this.state = {
+      persons : [
+        {name:"chirag",age:"22"},
+        {name:"saksham",age:"19"},
+        {name:"Taruna",age:"22"}
+      ],
+      showPersons:false
+     }
   }
+  static getDerivedStateFromProps(props,state)
+  {
+    console.log('App.js getDerivedStateFromProps',props)
+    return state;
+  }
+  componentDidMount(){
+    console.log('App.js componentDidmount')
+  }
+  shouldComponentUpdate(nextProps,nextState)
+  {
+    console.log('App.js shouldComponentUpdate')
+    return true;
+  }
+  componentDidUpdate(prevProps,prevState){
+    console.log('App.js ComponentDidUpdate')
+  }
+  // state = {
+    
+  // }
   // Its a good practice to name handler at the end of functions that are event based
   // switchNameHandler = (newName)=>{
 
@@ -56,53 +72,48 @@ class App extends Component {
     this.setState({showPersons:!doesShow  })
   }
   render() {
-    const style = {
-      backgroundColor:'green',
-      border:"1px solid black",
-      padding:"8px",
-      cursor:"pointer",
-      ':hover':{
-        backgroundColor:"lightgreen",
-        color:"white"
-      }
-    }
+    console.log('App.js render')
+    // const style = {
+    //   backgroundColor:'green',
+    //   border:"1px solid black",
+    //   padding:"8px",
+    //   cursor:"pointer",
+    //   ':hover':{
+    //     backgroundColor:"lightgreen",
+    //     color:"white"
+    //   }
+    // }
     let persons = null;
-    const classes = []
-    if(this.state.persons.length<=2)
-    {
-      classes.push('red');
-    }
-    if(this.state.persons.length<=1)
-    {
-      classes.push('bold')
-    }
+    // const classes = []
+    // if(this.state.persons.length<=2)
+    // {
+    //   classes.push('red');
+    // }
+    // if(this.state.persons.length<=1)
+    // {
+    //   classes.push('bold')
+    // }
     if(this.state.showPersons)
     {
       persons = (
         <div>
-          {this.state.persons.map((person,index)=>{
-            return <Person key={index} name = {person.name} age = {person.age} delete={()=> this.deletePersonHandler(index)}
-            changed = {(event)=>{this.nameChangeHandler(event,index)}}
-            />
-          })}
+          <Persons persons={this.state.persons}
+          clicked = {this.deletePersonHandler}
+          changed = {this.nameChangeHandler} />
         </div>
       )
-      style.backgroundColor = "red"
-      style[":hover"] = {
-        backgroundColor:"lightred",
-        color:"white"
-      }
+      
     }
     return (
       
       
-        <div className="App">
-        <p className={classes.join(' ')}>Hi I am react app</p>
-        <StyledButton  alt = {this.state.showPersons} onClick = {this.togglePersonsHandler}>SwitchName</StyledButton>
-        {/* Ineffecient */}
-          
-        {persons}
+        <div className={styles.App}>
         
+        <Cockpit persons={this.state.persons}
+                 showPersons ={this.state.showPersons}
+                 clicked = {this.togglePersonsHandler}
+        />
+        {persons}
       </div>
       
     );

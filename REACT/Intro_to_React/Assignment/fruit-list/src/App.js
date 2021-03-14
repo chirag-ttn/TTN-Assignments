@@ -14,11 +14,13 @@ class App extends Component{
     this.setState({fruits:fruits})
   }
   addFruitHandler = (event)=>{
+    
     const val = this.state.value
     const arr = val.split('-')
     const fruits = [...this.state.fruits]
     fruits.push({name:arr[0] ,price:arr[1]})
     this.setState({fruits:fruits})
+    // this.setState({value:''})
     
   }
   inputChangeHandler= (event) =>{
@@ -27,7 +29,7 @@ class App extends Component{
   render(){
     return(
       <div>
-        <input onChange={this.inputChangeHandler}type="text" placeholder="Enter fruit and price"/>
+        <input type="reset" defaultValue = ""onChange={this.inputChangeHandler}type="text" placeholder="Enter fruit and price"/>
         <button onClick={this.addFruitHandler}>Submit</button>
         <table>
           <tr>
