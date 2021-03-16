@@ -6,6 +6,7 @@ import styles from './App.module.css';
 import Person from '../Components/Persons/Person/Person'
 import Persons from '../Components/Persons/Persons'
 
+
 // import styled from 'styled-components'
 // import Radium ,{StyleRoot}from 'radium'
 
@@ -20,7 +21,9 @@ class App extends Component {
         {name:"saksham",age:"19"},
         {name:"Taruna",age:"22"}
       ],
-      showPersons:false
+      showPersons:false,
+      showCockpit:true,
+      person:123
      }
   }
   static getDerivedStateFromProps(props,state)
@@ -63,9 +66,12 @@ class App extends Component {
       this.setState({persons:persons})
   }  
   deletePersonHandler = (personIndex)=>{
-    const persons = [...this.state.persons];
-    persons.splice(personIndex,1)
-    this.setState({persons:persons})
+    // const persons = [...this.state.persons];
+    // const persons = this.state.persons.slice();
+    const abc = this.state.persons;
+    abc.splice(personIndex,1)
+    console.log(abc)
+    this.setState({person:123})
   }
   togglePersonsHandler = ()=>{
     const doesShow = this.state.showPersons;
@@ -108,11 +114,15 @@ class App extends Component {
       
       
         <div className={styles.App}>
+        <button onClick={()=>{this.setState({showCockpit:false})}}>removeCockpit</button>
+        {
+          this.state.showCockpit?
+          (<Cockpit persons={this.state.persons}
+          showPersons ={this.state.showPersons}
+          clicked = {this.togglePersonsHandler}
+          />):null
+        }
         
-        <Cockpit persons={this.state.persons}
-                 showPersons ={this.state.showPersons}
-                 clicked = {this.togglePersonsHandler}
-        />
         {persons}
       </div>
       

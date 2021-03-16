@@ -1,7 +1,15 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import classes from './cockpit.module.css'
-const cockpit = (props)=>{
-    
+const Cockpit = (props)=>{
+    useEffect(()=>{
+        console.log('cockpit.js useEffect')
+        setTimeout(()=>{
+            alert('Save data to cloud')  
+        },1000)
+        return ()=>{ 
+            console.log('cockpit.js CleanUP work')
+        };
+    },[]);
     const assClasses = []
     let btnClass = ''
     if(props.showPersons)
@@ -31,4 +39,4 @@ const cockpit = (props)=>{
     
 }
 
-export default cockpit;
+export default Cockpit;
