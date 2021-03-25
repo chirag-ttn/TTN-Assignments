@@ -4,6 +4,7 @@ import classes from './ContactData.module.css'
 import axios from '../../../axios-orders'
 import Input from '../../../components/UI/Input/Input'
 import Spinner from '../../../components/UI/Spinner/Spinner'
+import {connect} from 'react-redux'
 class ContactData extends Component{
     state = {
         orderForm:{
@@ -98,7 +99,7 @@ class ContactData extends Component{
         updatedFormSelected.valid = this.checkValidity(updatedFormSelected.value,updatedFormSelected.validation)
         updatedForm[formIdentifier]=updatedFormSelected
         
-        let formIsValid = false;
+        let formIsValid = true;
         for(let inputId in updatedForm){
             formIsValid = updatedForm[inputId].valid && formIsValid
         }
@@ -106,7 +107,7 @@ class ContactData extends Component{
             orderForm:updatedForm,
             formIsValid:formIsValid
         })
-        
+        console.log('formId',formIsValid)
     }
     orderHandler=(event)=>{
         event.preventDefault();
@@ -132,6 +133,7 @@ class ContactData extends Component{
         })
     }
     render(){
+        console.log('valid',this.state.formIsValid)
         const formElements = [];
         for(let key in this.state.orderForm)
         {
@@ -156,7 +158,7 @@ class ContactData extends Component{
                     )
             })}
             
-            <Button disabled={!this.formIsValid} clicked = {this.orderHandler}btnType="Success">ORDER</Button>
+            <Button disabled={!this.state.formIsValid} clicked = {this.orderHandler}btnType="Success">ORDER</Button>
         </form>);
         if(this.state.loading)
         {
@@ -171,4 +173,11 @@ class ContactData extends Component{
         )
     }
 }
-export default ContactData;
+const mapStateToProps = state =>{
+    return{
+        ingredients:state.ingredients,
+        totalPrice:state.totalPrice
+    }
+}
+
+export default connect(mapStateToProps)(ContactData);
