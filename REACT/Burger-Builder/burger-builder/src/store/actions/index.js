@@ -14,3 +14,9 @@ export {
     fetchOrders
 } from './order'
 
+export {
+    auth,
+    logout,
+    authRedirectPath,
+    authCheckState
+} from './auth.js'

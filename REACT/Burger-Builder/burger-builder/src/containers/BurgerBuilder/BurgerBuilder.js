@@ -12,7 +12,7 @@ import * as burgerBuilderActions from '../../store/actions/index'
 // Create a mapping of prices vs ingredients
 
 
-class BurgerBuilder extends Component{
+export class BurgerBuilder extends Component{
     constructor(props){
         super(props)
 
@@ -71,7 +71,16 @@ class BurgerBuilder extends Component{
         this.updatePurchase(updatedIngredients)
     }
     updatePurchasing = ()=>{
-        this.setState({purchasing:true})
+        if(this.props.isAuthenticated)
+        {
+            this.setState({purchasing:true})
+            
+        }
+        else
+        {
+            this.props.onSetAuthRedirectPath('/checkout')
+            this.props.history.push('/auth')
+        }
     }
     purchaseCancelledHandler=()=>{
         this.setState({
@@ -83,6 +92,7 @@ class BurgerBuilder extends Component{
         // purchased->false,
         // on success purchased:true
         // so this function will change state of purchased to false before the mopunting of checkout component
+        
         this.props.history.push('/checkout')
     }
     render(){
@@ -116,7 +126,7 @@ class BurgerBuilder extends Component{
             price = {this.props.tp}
             purchasable = {this.updatePurchase(this.props.ings)}
             ordered = {this.updatePurchasing}
-            
+            isAuth={this.props.isAuthenticated}
             />
             </div>
         )
@@ -135,7 +145,9 @@ const mapStateToProps = state =>{
     return{
         ings: state.burgerBuilder.ingredients,
         tp: state.burgerBuilder.totalPrice,
-        error:state.burgerBuilder.error
+        error:state.burgerBuilder.error,
+        isAuthenticated:state.auth.token!==null,
+        
     }
 }
 const mapDispatchToProps = dispatch=>{
@@ -143,7 +155,8 @@ const mapDispatchToProps = dispatch=>{
         onIngredientAdded:(ingName)=> dispatch(burgerBuilderActions.addIngredient(ingName)),
         onIngredientRemoved:(ingName)=> dispatch(burgerBuilderActions.removeIngredient(ingName)),
         onInitIngredients:(err)=>dispatch(burgerBuilderActions.initIngredients()),
-        onInitPurchase: ()=>dispatch(burgerBuilderActions.purchaseInit())
+        onInitPurchase: ()=>dispatch(burgerBuilderActions.purchaseInit()),
+        onSetAuthRedirectPath: (path)=> dispatch(burgerBuilderActions.authRedirectPath(path))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(withErrorHandler(BurgerBuilder,axios));

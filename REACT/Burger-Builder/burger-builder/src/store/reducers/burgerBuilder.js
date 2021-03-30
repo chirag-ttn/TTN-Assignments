@@ -8,7 +8,8 @@ const INGREDIENT_PRICES = {
 const initialState={
     ingredients:null,
     totalPrice:0,
-    error:false
+    error:false,
+    building:false
 }
 
 const reducer = (state = initialState, action) =>{
@@ -18,6 +19,7 @@ const reducer = (state = initialState, action) =>{
             
             return{
                 ...state,
+                building:true,
                 ingredients:{
                     ...state.ingredients,
                     [action.ingredientName]:state.ingredients[action.ingredientName]+1  
@@ -42,6 +44,7 @@ const reducer = (state = initialState, action) =>{
                     cheese:action.ingredients.cheese,
                     meat:action.ingredients.meat
                 },
+                
                 totalPrice:4
                 
             };
