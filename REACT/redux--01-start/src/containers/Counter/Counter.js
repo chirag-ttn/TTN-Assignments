@@ -1,28 +1,12 @@
 import React, { Component } from 'react';
-import * as actions from '../../store/reducer/actions'
+import * as actionCounter from '../../store/actions/counter'
+import * as actionResults from '../../store/actions/results'
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
 import {connect} from 'react-redux'
+
 // console.log(1);
 class Counter extends Component {
-    
-    
-    counterChangedHandler = ( action, value ) => {
-        switch ( action ) {
-            case 'inc':
-                this.setState( ( prevState ) => { return { counter: prevState.counter + 1 } } )
-                break;
-            case 'dec':
-                this.setState( ( prevState ) => { return { counter: prevState.counter - 1 } } )
-                break;
-            case 'add':
-                this.setState( ( prevState ) => { return { counter: prevState.counter + value } } )
-                break;
-            case 'sub':
-                this.setState( ( prevState ) => { return { counter: prevState.counter - value } } )
-                break;
-        }
-    }
     
     render () {
         return (
@@ -60,12 +44,12 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
     
    return({
-       onIncrementCounter: ()=>dispatch({type:actions.INCREMENT}),
-       onDecrementCounter: ()=>dispatch({type:actions.DECREMENT}),
-       onAddFive:          ()=>dispatch({type:actions.ADDFIVE,val:5}),
-       onSubFive:          ()=>dispatch({type:actions.SUBFIVE,val:5}),
-       onStoreResults:     (result)=>dispatch({type:actions.STORE_RESULT,result:result}),
-       onClickResult:      (id)=>dispatch({type:actions.DELETE_RESULT,val:id})
+       onIncrementCounter: ()=>dispatch(actionCounter.increment()),
+       onDecrementCounter: ()=>dispatch(actionCounter.decrement()),
+       onAddFive:          ()=>dispatch(actionCounter.addFive(5)),
+       onSubFive:          ()=>dispatch(actionCounter.subFive(5)),
+       onStoreResults:     (result)=>dispatch(actionResults.storeResult(result)),
+       onClickResult:      (id)=>dispatch(actionResults.deleteResult(id))
         
    }) 
 }

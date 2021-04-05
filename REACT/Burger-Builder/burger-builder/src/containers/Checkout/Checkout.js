@@ -6,39 +6,39 @@ import {Redirect, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index'
 
-class Checkout extends Component{
+const Checkout = props=>{
    
     
-    onCheckoutCancelled = ()=>{
-        this.props.history.goBack();
+    const onCheckoutCancelled = ()=>{
+        props.history.goBack();
     }
-    onCheckoutContinued = ()=>{
+    const onCheckoutContinued = ()=>{
         
-        this.props.history.replace('/checkout/contact-data')
+        props.history.replace('/checkout/contact-data')
     }
-    render(){
+    
         let summary = <Redirect to='/' />
-        if(this.props.ingredients)
+        if(props.ingredients)
         {
-            const purchasedRedirect = this.props.purchased?<Redirect to='/'/>:null
+            const purchasedRedirect = props.purchased?<Redirect to='/'/>:null
             summary = (<div>
             {purchasedRedirect}
             {/* purchasestart - purchased->false */}
             {/* purchaseSuccess-purchased ->true page will be redirected*/}
             {/* again clicking continue it will remount the page */}
-            <CheckoutSummary ingredients = {this.props.ingredients} 
-            onCheckoutCancelled={this.onCheckoutCancelled}
-            onCheckoutContinued={this.onCheckoutContinued}/>
-            <Route path = {this.props.match.path+'/contact-data'} 
+            <CheckoutSummary ingredients = {props.ingredients} 
+            onCheckoutCancelled={onCheckoutCancelled}
+            onCheckoutContinued={onCheckoutContinued}/>
+            <Route path = {props.match.path+'/contact-data'} 
             render={(props)=>(<ContactData 
-            ingredients={this.props.ingredients} 
-            totalPrice = {this.props.totalPrice} 
+            ingredients={props.ingredients} 
+            totalPrice = {props.totalPrice} 
             {...props}/>)}/>
             </div>)
         }
         return summary
     }
-}
+
 const mapStateToProps = state =>{
     return{
         ingredients:state.burgerBuilder.ingredients,

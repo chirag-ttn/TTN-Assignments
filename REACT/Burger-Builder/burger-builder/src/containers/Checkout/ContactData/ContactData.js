@@ -7,7 +7,8 @@ import Spinner from '../../../components/UI/Spinner/Spinner'
 import {connect} from 'react-redux'
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
 import * as actions from '../../../store/actions/index'
-class ContactData extends Component{
+const ContactData = props => {
+    const 
     state = {
         orderForm:{
             name:{
@@ -78,7 +79,7 @@ class ContactData extends Component{
         formIsValid:false,
         error:false
     } 
-    checkValidity = (value,rules)=>{
+    const checkValidity = (value,rules)=>{
         let isValid = false;
         if(rules.required)
         {
@@ -87,7 +88,7 @@ class ContactData extends Component{
         return isValid;
 
     }
-    inputChangedHandler = (event,formIdentifier)=>{
+    const inputChangedHandler = (event,formIdentifier)=>{
         const updatedForm = {
             ...this.state.orderForm
         }
@@ -128,7 +129,7 @@ class ContactData extends Component{
         }
         this.props.onOrderBurger(order,this.props.token)
     }
-    render(){
+    
         // console.log('valid',this.state.formIsValid)
         const formElements = [];
         for(let key in this.state.orderForm)
@@ -168,7 +169,7 @@ class ContactData extends Component{
             </div>
         )
     }
-}
+
 const mapStateToProps = state =>{
     return{
         ingredients:state.burgerBuilder.ingredients,
