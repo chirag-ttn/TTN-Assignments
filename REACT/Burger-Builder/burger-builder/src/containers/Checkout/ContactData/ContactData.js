@@ -112,7 +112,7 @@ const ContactData = props => {
         })
         // console.log('formId',formIsValid)
     }
-    orderHandler=(event)=>{
+    const orderHandler=(event)=>{
         event.preventDefault();
         const formData={}
         for(let formIdentifier in this.state.orderForm)
@@ -155,7 +155,7 @@ const ContactData = props => {
                     )
             })}
             
-            <Button disabled={!this.state.formIsValid} clicked = {this.orderHandler}btnType="Success">ORDER</Button>
+            <Button disabled={!this.state.formIsValid} clicked = {orderHandler}btnType="Success">ORDER</Button>
         </form>);
         if(this.props.loading)
         {
