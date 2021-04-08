@@ -6,7 +6,7 @@ console.log(Array.from(arr_q1Set)); // Unique elements from the set converted to
 
 
 // 2. Find the possible combinations of a string and store them in a MAP?
-const ques2 = 'ToTheNew';
+const ques2 = "Chirag";
 const allCombinations = (ques2) => {
     var lenStr = ques2.length;
     var result = [];
@@ -97,10 +97,10 @@ class User {
     }
 }
 
-const user = new User('Archit');
+const user = new User('Chirag');
 
-console.log(User.isNameTaken('Archit'));
-console.log(User.isNameTaken('Raman'));
+console.log(User.isNameTaken('Chirag'));
+console.log(User.isNameTaken('Santosh'));
 
 // 5. Import a module containing the constants and method for calculating area of circle, rectangle, cylinder.
 import * as cal from './modules/area.js';
