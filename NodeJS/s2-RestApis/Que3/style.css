@@ -1,0 +1,8 @@
+.outer-div{
+    width: 100%;
+}
+.divs{
+    width: 30%;
+    height: 100px;
+    float:left
+}
