@@ -4,7 +4,7 @@ var fs = require('fs');
 var date1 = new Date();
 
 
-var content = fs.readFileSync('file.txt',{encoding:'utf-8',flag:'r'})
+var content = fs.readFileSync('JS-Wes-Bos.pdf',{encoding:'utf-8',flag:'r'})
 var date2 = new Date();
 console.log('Waiting')
 

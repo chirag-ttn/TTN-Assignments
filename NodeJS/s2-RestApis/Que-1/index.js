@@ -3,7 +3,7 @@ const http = require('http');
 const url = require('url');
 const person = [
     { username: 'chirag', lastname: 'gandhi' },
-    { username: 'taruna', lastname: 'khera' },
+    { username: 'nikhil', lastname: 'sarin' },
     { username: 'saksham', lastname: 'gandhi' },
     { username: 'aman', lastname: 'kalra' }
 ]
@@ -16,6 +16,9 @@ const server = http.createServer((req, res) => {
         res.end()
     }
     else if (baseURL === '/users') {
+        res.writeHead(200,'ok',{
+        'Content-Type':'application/json'
+        })
         res.write(JSON.stringify(person))
         res.end()
     }
