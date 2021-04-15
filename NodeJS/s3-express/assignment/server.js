@@ -2,7 +2,7 @@ const express = require('express')
 const data = []
 const app = express();
 const router = require('./router/routes')
-const homeRouter = require('./router/home-route')
+
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('./views'))
@@ -13,3 +13,4 @@ res.send(data)
 app.listen(3000,()=>{
     console.log('listening on 3000')
 })
+

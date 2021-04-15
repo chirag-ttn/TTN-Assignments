@@ -5,8 +5,8 @@ const handleData = (data,value)=>{
 }
 module.exports = (app,data)=>{
     
-    app.get('/index',(req,res)=>{
-        res.send('index')
+    app.get('/',(req,res)=>{
+        res.redirect('/home')
     })
     app.get('/home',(req,res)=>{
         res.sendFile('/home/ttn/Desktop/TTN-Assignments/NodeJS/s3-express/assignment/views/home.html')
