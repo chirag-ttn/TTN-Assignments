@@ -1,0 +1,15 @@
+.button{
+    width: calc(22%);
+    margin: 5px;
+    font-size: large;
+    font-weight:400;
+    background-color: rgb(241,243,244);
+    border: none;
+}
+.buttonColor{
+    /* color: orange; */
+    background-color: rgb(218,220,224);
+}
+.equalButton{
+    background-color: rgb(66,133,244);
+}

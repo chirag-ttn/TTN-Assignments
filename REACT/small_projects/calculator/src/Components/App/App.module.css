@@ -1,0 +1,12 @@
+
+.calculator_container{
+width: 40vw;
+height: 80vh;
+
+/* border: 1px solid darkblue; */
+border-radius: 5px;
+margin-top: 100px;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}

@@ -1,0 +1,19 @@
+.display{
+    width: 90%;
+    height: 15%;
+    background-color: white;
+    margin-top: 10%;
+    /* border:1px solid darkblue; */
+    border:1px solid rgb(66,133,244);
+    border-radius:5px;
+    font-size: large;
+    position: relative;
+}
+.displayText{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 2em;
+    float: right;
+    margin-bottom:0 ;
+}

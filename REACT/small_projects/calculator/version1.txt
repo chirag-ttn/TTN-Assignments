@@ -1,0 +1,13 @@
+version:1.0.0
+project:Calculator
+
+Features:
+-> Add, Multiply, Substract, Divide upto one operands.
+
+Future Prospects
+
+-> Add bracket Feature
+-> Compute values upto two operands
+-> Add to clear screen
+-> Add scientific calculator methods too
+
