@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-var streamReader = fs.ReadStream('./chirag.txt',{highWaterMark:1000})
+var streamReader = fs.ReadStream('./chirag.txt',{highWaterMark:10})
 let data = '';
 streamReader.on('data',(chunk)=>{
     console.log('=====================================================')

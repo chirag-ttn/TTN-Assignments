@@ -27,7 +27,7 @@ const server = http.createServer((req, res) => {
         
         const branch = new_url.query.branch
         console.log(branch)
-        let ans = {}
+        let ans = []
         ans = students.filter((s)=>{
             return s.branch===branch
         })
