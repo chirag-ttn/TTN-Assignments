@@ -39,16 +39,27 @@ app.use(session({
 // WILL USE BCRYPT IN FUTURE
 
 
-// app.use(passport.session());
+
 // ==========END PASSPORT============
 
 // ==============JWT PASSPORT====================
 
-require('./passport/passport-jwt')(passport)
+// require('./passport/passport-jwt')(passport)
 
 // ===============END JWT========================
+
+// ==============PASSPORT LOCAL==================
+
 // require('./passport/passport-local')(passport)
+
+// ===============PASSPORT-LOCAL==================
+
+// ===============PASSPORT FACEBOOK===============
+require('./passport/passport-facebook')(passport)
+// ===============PASSPORT FACEBOOK===============
 app.use(passport.initialize())
+app.use(passport.session())
+
 app.set('views', __dirname + '/views');
 app.engine('html', require('ejs').renderFile);
 app.get('/',(req,res)=>{    
@@ -67,6 +78,12 @@ passport.authenticate('jwt',{session:false}),(req,res)=>{
 })
 app.get('/api/protectedlocal',passport.authenticate('local',{failureRedirect:'/api/protectedlocal/success',successRedirect:'/api/protectedlocal/failure'}),(err,req,res,next)=>{
     if(err) next(err)
+})
+app.get('/api/facebook',passport.authenticate('facebook',{ scope: ['user_friends'] }),(req,res)=>{
+    res.send('logged in')
+})
+app.get('/auth/facebook/callback',(req,res)=>{
+    res.send('Authenticated by facebook')
 })
 app.get('/api/protectedlocal/success',(req,res)=>{
     res.send('You are allowed to acces this route and authenticated by local strategy')
