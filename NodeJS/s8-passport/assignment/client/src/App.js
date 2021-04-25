@@ -1,6 +1,6 @@
 import './App.css';
 import {Switch, Route} from 'react-router-dom'
-import Welcome from './components/Welcome/welcome'
+import Welcome from './components/Result/welcome'
 import LoginForm from './container/LoginForm/LoginForm'
 function App() {
   return (

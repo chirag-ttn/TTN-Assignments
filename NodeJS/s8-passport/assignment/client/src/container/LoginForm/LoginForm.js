@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Welcome from '../../components/Welcome/welcome'
+import Welcome from '../../components/Result/welcome'
 import {
     BrowserRouter as Router,
     Switch,

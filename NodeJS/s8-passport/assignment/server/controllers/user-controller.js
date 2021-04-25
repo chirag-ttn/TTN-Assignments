@@ -1,42 +1,65 @@
 const User = require('../models/user-model')
 const crypto = require('crypto')
-function genPassword(password) {
-    var salt = crypto.randomBytes(32).toString('hex');
-    var genHash = crypto.pbkdf2Sync(password, salt, 10000, 64, 'sha512').toString('hex');
-    
-    return {
-      salt: salt,
-      hash: genHash
-    };
-}
+const utils = require('../utils')
+
 
 createUser = (req, res) => {
-    
-    const saltHash = genPassword(req.body.password);
-    
+    console.log('Req',req.body)
+    const saltHash = utils.genPassword(req.body.password);
+
     const salt = saltHash.salt;
     const hash = saltHash.hash;
 
     const newUser = new User({
-        username: req.body.username,
+        name:req.body.name,
+        username: req.body.email,
         hash: hash,
         salt: salt
     });
-
+    console.log(newUser)
     newUser.save()
         .then((user) => {
             console.log(user);
         });
 
     res.redirect('/login');
-    
-    
+
+
 
 }
 
 
+findUser = (req, res,next) => {
+    User.findOne({ username: req.body.email })
+        .then((user) => {
 
+            if (!user) {
+                res.status(401).json({ success: false, msg: "could not find user" });
+            }
+
+            // Function defined at bottom of app.js
+            const isValid = utils.validPassword(req.body.password, user.hash, user.salt);
+
+            if (isValid) {
+
+                const tokenObject = utils.issueJWT(user);
+
+                res.status(200).json({ success: true, token: tokenObject.token, expiresIn: tokenObject.expires });
+                // res.redirect('/api/protected')
+
+            } else {
+
+                res.status(401).json({ success: false, msg: "you entered the wrong password" });
+
+            }
+
+        })
+        .catch((err) => {
+            next(err);
+        });
+}
 
 module.exports = {
-    createUser
+    createUser,
+    findUser
 }
