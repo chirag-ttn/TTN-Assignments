@@ -1,7 +1,7 @@
 const User = require('../models/user-model')
 const crypto = require('crypto')
 const utils = require('../utils')
-
+const cookie = require('cookie')
 
 createUser = (req, res) => {
     console.log('Req',req.body)
@@ -43,9 +43,15 @@ findUser = (req, res,next) => {
             if (isValid) {
 
                 const tokenObject = utils.issueJWT(user);
-
-                res.status(200).json({ success: true, token: tokenObject.token, expiresIn: tokenObject.expires });
-                // res.redirect('/api/protected')
+                
+                res.setHeader('Set-cookie', cookie.parse( tokenObject.token, {
+                    decode:decodeURIComponent,
+                    maxAge: 1000*60*30 //30 min
+                  }));
+                // res.status(200).json({ success: true, token: tokenObject.token, expiresIn: tokenObject.expires });
+                
+                res.redirect('/api/protected')
+                
 
             } else {
 
