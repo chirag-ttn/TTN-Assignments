@@ -8,12 +8,14 @@ module.exports = (passport) => {
         profileFields: ['id', 'displayName', 'photos', 'email']
     },
         function (accessToken, refreshToken, profile, cb) {
+            console.log(profile)
             User.findOrCreate({ facebookId: profile.id }, function (err, user) {
                 return cb(err, user);
             });
         }
     ))
     passport.serializeUser(function(user, cb) {
+        console.log(user)
         cb(null, user.id);
     });
     

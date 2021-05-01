@@ -79,10 +79,11 @@ passport.authenticate('jwt',{session:false}),(req,res)=>{
 app.get('/api/protectedlocal',passport.authenticate('local',{failureRedirect:'/api/protectedlocal/success',successRedirect:'/api/protectedlocal/failure'}),(err,req,res,next)=>{
     if(err) next(err)
 })
-app.get('/api/facebook',passport.authenticate('facebook',{ scope: ['user_friends'] }),(req,res)=>{
+app.get('/api/facebook',passport.authenticate('facebook',{ scope: ['email'] }),(req,res)=>{
     res.send('logged in')
 })
 app.get('/auth/facebook/callback',(req,res)=>{
+    
     res.send('Authenticated by facebook')
 })
 app.get('/api/protectedlocal/success',(req,res)=>{
