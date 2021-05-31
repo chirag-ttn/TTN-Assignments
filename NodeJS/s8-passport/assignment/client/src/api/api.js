@@ -2,7 +2,7 @@ import axios from 'axios'
 // import { post } from '../../../server/routes/user/user-routes'
 
 const api = axios.create({
-    baseURL:'http://localhost:4444/api'
+    baseURL:'http://localhost:5555/api'
 })
 
 export const login = (data)=>{

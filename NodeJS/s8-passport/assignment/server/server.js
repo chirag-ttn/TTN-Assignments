@@ -61,7 +61,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
+
 app.get('/',(req,res)=>{    
     res.render('home.html')
 })
@@ -102,6 +102,6 @@ app.get('/api/logout', (req, res, next) => {
 
 
 app.use('/api',router)
-app.listen(4444,()=>{
-    console.log('server is running on port http://localhost:4444/')
+app.listen(5555,()=>{
+    console.log('server is running on port http://localhost:5555/')
 })
